@@ -26,8 +26,50 @@ function techList(array3, nameUser) {
 }
 
 // Desafio 11
-function generatePhoneNumber() {
+function generatePhoneNumber(numbers) {
   // seu código aqui
+  // referência de site: https://www.horadecodar.com.br/2020/11/12/como-fazer-uma-copia-de-array-sem-referencia-em-javascript/
+
+  let total = numbers.length;
+  let repetido = 1;
+  let numero = numbers.slice();
+  let indexSecond = 0;
+  
+  
+
+  if(total !== 11){
+    return "Array com tamanho incorreto."
+  }
+  else{
+    for(let index = 0; index < total; index+=1){
+      if(numbers[index] > 9 || numbers[index] < 0){
+      return "não é possível gerar um número de telefone com esses valores"
+      break;
+      }
+    }
+    
+    for(let index = 1; index < total; index+=1) {
+      for(let indexTwo = 0; indexTwo < index; indexTwo+=1) {
+          if(numero[index] > numero[indexTwo]){
+              let aux = numero[index];
+              numero[index] = numero[indexTwo];
+              numero[indexTwo] = aux;
+          }
+      }
+    }
+    for(let index = 1; index < total; index+=1) {
+      if(numero[indexSecond] === numero[index]) {
+        repetido += 1;
+          if(repetido >= 3){
+            return "não é possível gerar um número de telefone com esses valores";
+            break;
+          }
+      } else if(numero[indexSecond] !== numero[index+1]) {
+          indexSecond += 1;
+      } 
+    }
+    return '(' + numbers[0] + numbers[1] + ')' +  ' ' + numbers[2] + numbers[3] + numbers[4] + numbers[5] + numbers[6] + '-' + numbers[7] + numbers[8] + numbers[9] + numbers[10]; 
+    }
 }
 
 // Desafio 12
