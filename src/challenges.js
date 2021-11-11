@@ -107,11 +107,62 @@ function fizzBuzz(array) {
 // Desafio 9
 function encode(mensagem) {
   // seu código aqui
-  
+  let frase = '';
+
+  for(let index = 0; index < mensagem.length; index+=1){
+    if(mensagem[index] === 'a'){
+      frase += '1';
+    } else if(mensagem[index] === 'e'){
+      frase += '2';
+    } else if(mensagem[index] === 'i'){
+      frase += '3';
+    } else if(mensagem[index] === 'o'){
+      frase += '4';
+    } else if(mensagem[index] === 'u'){
+      frase += '5';
+    } else {
+      frase += mensagem[index];
+    }
+  }
+  return frase;
 }
-function decode() {
+function decode(frase) {
   // seu código aqui
+  let frase2 = '';
+  for(let index = 0; index < frase.length; index+=1){
+    if(frase[index] === '1'){
+      frase2 += 'a';
+    } else if(frase[index] === '2'){
+      frase2 += 'e';
+    } else if(frase[index] === '3'){
+      frase2 += 'i';
+    } else if(frase[index] === '4'){
+      frase2 += 'o';
+    } else if(frase[index] === '5'){
+      frase2 += 'u';
+    } else {
+      frase2 += frase[index];
+    }
+  }
+  return frase2;
 }
+
+// Desafio 10
+function listOfTechnology(array3, nameUser) {
+  let technology = [];
+  let object = {};
+if(array3.length === 0){
+  return "Vazio!";
+} else{
+    for(let index = 0; index < array3.length; index+=1){
+      technology.push (object = { tech: array3[index], nome: nameUser});
+    };
+  };
+technology.sort(function (a, b) {
+      return (a.tech > b.tech) ? 1 : ((b.tech > a.tech) ? -1 : 0);
+    });
+  return technology;
+};
 
 module.exports = {
   calcArea,
