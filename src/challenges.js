@@ -147,23 +147,6 @@ function decode(frase) {
   return frase2;
 }
 
-// Desafio 10
-function listOfTechnology(array3, nameUser) {
-  let technology = [];
-  let object = {};
-if(array3.length === 0){
-  return "Vazio!";
-} else{
-    for(let index = 0; index < array3.length; index+=1){
-      technology.push (object = { tech: array3[index], nome: nameUser});
-    };
-  };
-technology.sort(function (a, b) {
-      return (a.tech > b.tech) ? 1 : ((b.tech > a.tech) ? -1 : 0);
-    });
-  return technology;
-};
-
 module.exports = {
   calcArea,
   catAndMouse,
