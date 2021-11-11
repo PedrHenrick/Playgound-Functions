@@ -1,11 +1,18 @@
 // Desafio 1
-function compareTrue() {
+function compareTrue(ValueOne, ValueTwo) {
   // seu código aqui
+  if(ValueOne === true && ValueTwo === true){
+    return true;
+  }else{
+    return false;
+  }
 }
 
 // Desafio 2
-function calcArea() {
+function calcArea(base, height) {
   // seu código aqui
+  let triangleArea = (base*height)/2;
+  return triangleArea;
 }
 
 // Desafio 3
