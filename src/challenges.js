@@ -16,13 +16,26 @@ function calcArea(base, height) {
 }
 
 // Desafio 3
-function splitSentence() {
+function splitSentence(string) {
   // seu código aqui
+  //Referêcia site: https://digitalinnovation.one/artigos/4-maneiras-de-converter-string-em-array-de-caracteres-em-javascript
+  const breakSentences = string.split(' ');
+  return breakSentences;
 }
 
 // Desafio 4
-function concatName() {
+function concatName(array) {
   // seu código aqui
+  let string = '';
+  let arraySize = array.length;
+
+
+  if(arraySize - 1 === 0){
+    string += array[0];
+  }else{
+    string += array[arraySize-1] + ', ' + array[0];
+  }
+  return string;
 }
 
 // Desafio 5
