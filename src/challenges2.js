@@ -73,14 +73,38 @@ function generatePhoneNumber(numbers) {
 }
 
 // Desafio 12
-function triangleCheck() {
+function triangleCheck(lineA, lineB, lineC) {
   // seu código aqui
+  // referência site: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/abs
+
+  let absoluteA = Math.abs(lineA);
+  let absoluteB = Math.abs(lineB);
+  let absoluteC = Math.abs(lineC);
+
+  if((lineA + lineB) > lineC && (lineC + lineB) > lineA && (lineA + lineC) > lineB && lineC > (absoluteA - absoluteB -absoluteC) && lineB > (absoluteA - absoluteC - absoluteB) && lineA > (absoluteA - absoluteC - absoluteB)){
+    return true;
+  }else{
+    return false;
+  }
 }
 
 // Desafio 13
-function hydrate() {
+function hydrate(sentence) {
   // seu código aqui
+  //Referêcia site: https://www.horadecodar.com.br/2020/10/14/como-obter-apenas-os-numeros-de-uma-string-em-javascript/
+  let numero = sentence.replace(/[^0-9]/g,'');
+  let somaNumeros = 0;
+
+  for(let index = 0; index < numero.length; index+=1){
+    somaNumeros += parseInt(numero[index]);
+  }
+  if(somaNumeros == 1){
+    return somaNumeros + " copo de água";
+  } else {
+  return somaNumeros + " copos de água";
+  }
 }
+console.log(hydrate("1 cachaça, 5 cervejas e 1 copo de vinho"));
 
 module.exports = {
   generatePhoneNumber,
