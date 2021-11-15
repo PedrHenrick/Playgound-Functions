@@ -1,149 +1,117 @@
-// Desafio 1
+// Desafio 1 (ok)
 function compareTrue(ValueOne, ValueTwo) {
   // seu código aqui
-  if(ValueOne === true && ValueTwo === true) {
-    return true;
-  } else {
-    return false;
-  }
+  let resposta;
+  if (ValueOne === true && ValueTwo === true) resposta = true;
+  else resposta = false;
+  return resposta;
 }
 
-// Desafio 2
+// Desafio 2 (ok)
 function calcArea(base, height) {
   // seu código aqui
-  let triangleArea = (base*height)/2;
+  let triangleArea = (base * height) / 2;
   return triangleArea;
 }
 
-// Desafio 3
+// Desafio 3 (ok)
 function splitSentence(string) {
   // seu código aqui
-  //Referêcia site: https://digitalinnovation.one/artigos/4-maneiras-de-converter-string-em-array-de-caracteres-em-javascript
+  // referêcia site: https://digitalinnovation.one/artigos/4-maneiras-de-converter-string-em-array-de-caracteres-em-javascript
   const breakSentences = string.split(' ');
   return breakSentences;
 }
 
-// Desafio 4
+// Desafio 4 (ok)
 function concatName(array) {
   // seu código aqui
-  let string = '';
+  // referência site: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/join#juntando_um_array-like_object_objeto_estilo-array
   let arraySize = array.length;
+  let arrayVazio = [];
 
-  if(arraySize - 1 === 0){
-    string += array[0];
-  } else {
-    string += array[arraySize-1] + ', ' + array[0];
+  if (arraySize - 1 === 0) arrayVazio.push(array);
+  else {
+    arrayVazio.push(array[arraySize - 1]);
+    arrayVazio.push(array[0]);
   }
-  return string;
+  return arrayVazio.join(', ');
 }
 
-// Desafio 5
+// Desafio 5 (ok)
 function footballPoints(wins, ties) {
   // seu código aqui
-  let winningPoints = wins*3;
-  let tiePoints = ties*1;
+  let winningPoints = wins * 3;
+  let tiePoints = ties * 1;
   let scoreResult = winningPoints + tiePoints;
   return scoreResult;
 }
 
-// Desafio 6
-function highestCount(numbers) {
+// Desafio 6 (ok)
+function highestCount(num) {
   // seu código aqui
-  let counter = 1;
+  // referência site: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/max
+  let numeros = num.length;
+  let counter = numeros;
+  let maiorNumero = Math.max(...num);
 
-  for(let index = 1; index < numbers.length; index+=1) {
-    for(let indexTwo = 0; indexTwo < index; indexTwo+=1) {
-        if(numbers[index] > numbers[indexTwo]){
-            let aux = numbers[index];
-            numbers[index] = numbers[indexTwo];
-            numbers[indexTwo] = aux;
-        }
-    }
-  }
-  for(let index = 0; index < numbers.length; index+=1) {
-    if(numbers[index] == numbers[index+1]) {
-      counter += 1;
-    } else {
-      break;
-    }
+  for (let index = 0; index < numeros; index += 1) {
+    if (num[index] !== maiorNumero) counter -= 1;
   }
   return counter;
 }
 
-// Desafio 7
-function catAndMouse(mouse, cat1, cat2) {
+// Desafio 7 (ok)
+function catAndMouse(rato, primeiroGato, segundoGato) {
   // seu código aqui
-  
-
-  if(mouse-cat1 === 6 || mouse-cat1 === -6 && mouse-cat2 === 12 || mouse-cat2 === -12){
-    return "cat1"
-  } else if(mouse-cat1 === 3 || mouse-cat1 === -3 && mouse-cat2 === 2 || mouse-cat2 === -2) {
-    return "cat2"
-  } else if(mouse-cat1 === mouse-cat2 || mouse-cat1 - mouse-cat2 <= 0 || mouse-cat2 - mouse-cat1 <= 0 ){
-    return "os gatos trombam e o rato foge"
+  // referência site: https://qastack.com.br/programming/4652104/convert-a-negative-number-to-a-positive-one-in-javascript;
+  let distancia = '';
+  let distanciaPrimeiroGato = primeiroGato - rato;
+  let distanciaSegunoGato = segundoGato - rato;
+  if (Math.abs(distanciaPrimeiroGato) < Math.abs(distanciaSegunoGato)) {
+    distancia = 'cat1';
+  } else if (Math.abs(distanciaPrimeiroGato) > Math.abs(distanciaSegunoGato)) {
+    distancia = 'cat2';
+  } else if (Math.abs(distanciaPrimeiroGato) === Math.abs(distanciaSegunoGato)) {
+    distancia = 'os gatos trombam e o rato foge';
   }
-
+  return distancia;
 }
 
 // Desafio 8
 function fizzBuzz(array) {
   // seu código aqui
+  let tamanho = array.length;
   let ArrayOfString = [];
-
-  for(let index = 0; index < array.length; index+=1){
-    if(array[index]%3 === 0 && array[index]%5 !== 0){
-      ArrayOfString.push("fizz");
-    } else if(array[index]%3 !== 0 && array[index]%5 === 0){
-      ArrayOfString.push("buzz");
-    } else if(array[index]%3 === 0 && array[index]%5 === 0) {
-      ArrayOfString.push("fizzBuzz");
-    } else{
-      ArrayOfString.push("bug!");
-    }
+  for (let index = 0; index < tamanho; index += 1) {
+    if (array[index] % 3 === 0 && array[index] % 5 !== 0) ArrayOfString.push('fizz');
+    else if (array[index] % 3 !== 0 && array[index] % 5 === 0) ArrayOfString.push('buzz');
+    else if (array[index] % 3 === 0 && array[index] % 5 === 0) ArrayOfString.push('fizzBuzz');
+    else ArrayOfString.push('bug!');
   }
   return ArrayOfString;
 }
 
-// Desafio 9
+// Desafio 9 (ok)
 function encode(mensagem) {
   // seu código aqui
+  // referência site: https://blog.betrybe.com/javascript/javascript-replace/
   let frase = '';
-
-  for(let index = 0; index < mensagem.length; index+=1){
-    if(mensagem[index] === 'a'){
-      frase += '1';
-    } else if(mensagem[index] === 'e'){
-      frase += '2';
-    } else if(mensagem[index] === 'i'){
-      frase += '3';
-    } else if(mensagem[index] === 'o'){
-      frase += '4';
-    } else if(mensagem[index] === 'u'){
-      frase += '5';
-    } else {
-      frase += mensagem[index];
-    }
-  }
+  frase = mensagem.replace(/a/gi, '1');
+  frase = frase.replace(/e/gi, '2');
+  frase = frase.replace(/i/gi, '3');
+  frase = frase.replace(/o/gi, '4');
+  frase = frase.replace(/u/gi, '5');
   return frase;
 }
 function decode(frase) {
   // seu código aqui
+  // referência site: https://blog.betrybe.com/javascript/javascript-replace/
   let frase2 = '';
-  for(let index = 0; index < frase.length; index+=1){
-    if(frase[index] === '1'){
-      frase2 += 'a';
-    } else if(frase[index] === '2'){
-      frase2 += 'e';
-    } else if(frase[index] === '3'){
-      frase2 += 'i';
-    } else if(frase[index] === '4'){
-      frase2 += 'o';
-    } else if(frase[index] === '5'){
-      frase2 += 'u';
-    } else {
-      frase2 += frase[index];
-    }
-  }
+  frase2 = frase.replace(/1/gi, 'a');
+  frase2 = frase2.replace(/2/gi, 'e');
+  frase2 = frase2.replace(/3/gi, 'i');
+  frase2 = frase2.replace(/4/gi, 'o');
+  frase2 = frase2.replace(/5/gi, 'u');
   return frase2;
 }
 
