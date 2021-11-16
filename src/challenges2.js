@@ -23,9 +23,6 @@ function generatePhoneNumber(num) {
   if (num.length > 11 || num.length < 11) return 'Array com tamanho incorreto.';
   for (let key of num) {
     if (key > 9 || key < 0) return 'não é possível gerar um número de telefone com esses valores';
-    telefone = telefone.replace('x', key);
-  }
-  for (let key of num) {
     repetido = 0;
     for (let index of num) {
       if (index === key) {
@@ -33,6 +30,7 @@ function generatePhoneNumber(num) {
         if (repetido >= 3) return 'não é possível gerar um número de telefone com esses valores';
       }
     }
+    telefone = telefone.replace('x', key);
   }
   return telefone;
 }
@@ -52,19 +50,18 @@ function triangleCheck(lineA, lineB, lineC) {
   return resposta;
 }
 
-// Desafio 13
+// Desafio 13 (ok)
 function hydrate(sentence) {
   // seu código aqui
-  // Referêcia site: https://www.horadecodar.com.br/2020/10/14/como-obter-apenas-os-numeros-de-uma-string-em-javascript/
-  let numero = sentence.replace(/[^0-9]/g, '');
+  // Referêcia site: https://codereview.stackexchange.com/questions/115885/extract-numbers-from-a-string-javascript
+  let numero = sentence.match(/\d+/g).map(Number);
   let somaNumeros = 0;
-  let string = '';
-  for (let index = 0; index < numero.length; index += 1) {
-    somaNumeros += parseInt(numero[index]);
+
+  for (let key of numero) {
+    somaNumeros += key;
   }
-  if (somaNumeros === 1) string = somaNumeros + ' copo de água';
-  else string = somaNumeros + ' copos de água';
-  return string;
+  if (somaNumeros === 1) return `${somaNumeros} copo de água`;
+  return `${somaNumeros} copos de água`;
 }
 
 module.exports = {
