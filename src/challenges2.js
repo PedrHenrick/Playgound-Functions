@@ -16,24 +16,48 @@ function techList(tecnologias, userName) {
 }
 
 // Desafio 11
-function generatePhoneNumber(num) {
-  // seu código aqui
-  let telefone = '(xx) xxxxx-xxxx';
-  // Verificando o tamanho do array
-  if (num.length > 11 || num.length < 11) return 'Array com tamanho incorreto.';
+// seu código aqui
+// Para fechar esse algoritmo tive que fazer um code review nos pull requests e fazer uma adaptação de alguns pontos, mudanças na sintaxe e a adição de recursos já usados anteriormentee como o sort e o replace, para encaixar no meu arquivo e passar nos testes.
+function verificaAlgarismos(num) {
   for (let key of num) {
-    let repetido = 0;
-    // Verificando se os numeros vão de 0 a 9;
-    if (key > 9 || key < 0) return 'não é possível gerar um número de telefone com esses valores';
-    for (let index of num) {
-      // Verificando quantas vezes repete
-      if (key === index) repetido += 1;
-      if (repetido >= 3) return 'não é possível gerar um número de telefone com esses valores';
+    if (key > 9 || key < 0) return false;
+  }
+  return true;
+}
+function verificaRepeticaoDois(num, key, repetido) {
+  if (num[key] === num[key + 1]) {
+    return (repetido + 1);
+  }
+  return 1;
+}
+function verificaRepeticaoUm(num) {
+  let repetido = 1;
+  for (let key = 0; key < num.length; key += 1) {
+    repetido = verificaRepeticaoDois(num, key, repetido);
+    if (repetido >= 3) {
+      return false;
     }
-    // Com tudo ok, alterando o valor da string;
+  }
+  return true;
+}
+function verificaNumero(num) {
+  let retorno9ou0 = verificaAlgarismos(num);
+  let retornoRepetido = verificaRepeticaoUm([...num].sort());
+  return retorno9ou0 && retornoRepetido;
+}
+function imprimeNumero(num) {
+  let telefone = '(xx) xxxxx-xxxx';
+  for (let key of num) {
     telefone = telefone.replace('x', key);
   }
   return telefone;
+}
+function generatePhoneNumber(num) {
+  if (num.length !== 11) return 'Array com tamanho incorreto.';
+  if (verificaNumero(num)) {
+    return imprimeNumero(num);
+  }
+  return 'não é possível gerar um número de telefone com esses valores';
 }
 
 // Desafio 12 (ok)
