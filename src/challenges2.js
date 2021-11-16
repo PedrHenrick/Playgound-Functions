@@ -1,7 +1,7 @@
 // Desafio 10 (ok)
 function techList(tecnologias, userName) {
   // seu código aqui
-  // referência site: https://www.youtube.com/watch?v=JxdsTHdgqAU
+  // Dando um giro em pull requests vi que algumas pessoas estavam fazendo o metodo de ordenação através do sort desta maneira, o que auxiliou na hora de finalizar a ideia.
   let arrayVazio = [];
   if (tecnologias.length === 0) {
     return 'Vazio!';
