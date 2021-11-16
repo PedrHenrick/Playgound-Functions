@@ -1,50 +1,40 @@
-// Desafio 10
+// Desafio 10 (ok)
 function techList(tecnologias, userName) {
   // seu código aqui
   // referência site: https://www.youtube.com/watch?v=JxdsTHdgqAU
   let arrayVazio = [];
-  let objeto = {};
   if (tecnologias.length === 0) {
     return 'Vazio!';
   }
   if (tecnologias.length > 0) {
+    tecnologias = tecnologias.sort();
     for (let index = 0; index < tecnologias.length; index += 1) {
-      arrayVazio.push(objeto = { tech: tecnologias[index], name: userName });
+      arrayVazio.push({ tech: tecnologias[index], name: userName });
     }
-  }
-  if (tecnologias.length >= 5) {
-    const ordem = arrayVazio.sort((a, b) => {
-      return a.tech.localeCompare(b.tech);
-    });
   }
   return arrayVazio;
 }
-// console.log(techList(['React', 'Jest', 'HTML', 'CSS', 'JavaScript'], 'Lucas'));
 
 // Desafio 11
 function generatePhoneNumber(num) {
   // seu código aqui
-  let total = num.length;
+  let telefone = '(xx) xxxxx-xxxx';
   let repetido = 0;
-  if (total !== 11) return 'Array com tamanho incorreto.';
-  if (total === 11) {
-    for (let index = 0; index < total; index += 1) {
-      if (num[index] > 9 || num[index] < 0) {
-        return 'não é possível gerar um número de telefone com esses valores';
-      }
-    }
-    for (let index = 0; index < total; index += 1) {
-      for (let secondIndex = 1; secondIndex < total; secondIndex += 1) {
-        if (num[index] === num[secondIndex]) {
-          repetido += 1;
-          if (repetido === 3) return 'não é possível gerar um número de telefone com esses valores';
-        }
-      }
-      repetido = 0;
-    }
-    
+  if (num.length > 11 || num.length < 11) return 'Array com tamanho incorreto.';
+  for (let key of num) {
+    if (key > 9 || key < 0) return 'não é possível gerar um número de telefone com esses valores';
+    telefone = telefone.replace('x', key);
   }
-  return '(' + num[0] + num[1] + ') ' + num[2] + num[3] + num[4] + num[5] + num[6] + '-' + num[7] + num[8] + num[9] + num[10];
+  for (let key of num) {
+    repetido = 0;
+    for (let index of num) {
+      if (index === key) {
+        repetido += 1;
+        if (repetido >= 3) return 'não é possível gerar um número de telefone com esses valores';
+      }
+    }
+  }
+  return telefone;
 }
 
 // Desafio 12
