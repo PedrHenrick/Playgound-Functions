@@ -77,18 +77,18 @@ function catAndMouse(rato, primeiroGato, segundoGato) {
   return distancia;
 }
 
-// Desafio 8
+// Desafio 8 (ok)
 function fizzBuzz(array) {
-  // seu código aqui
-  let tamanho = array.length;
-  let ArrayOfString = [];
-  for (let index = 0; index < tamanho; index += 1) {
-    if (array[index] % 3 === 0 && array[index] % 5 !== 0) ArrayOfString.push('fizz');
-    else if (array[index] % 3 !== 0 && array[index] % 5 === 0) ArrayOfString.push('buzz');
-    else if (array[index] % 3 === 0 && array[index] % 5 === 0) ArrayOfString.push('fizzBuzz');
-    else ArrayOfString.push('bug!');
-  }
-  return ArrayOfString;
+// seu código aqui
+// referência site: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#imprimindo_os_conte%C3%BAdos_de_uma_ordem
+  let arrayVazio = [];
+  array.forEach((index) => {
+    if (index % 3 === 0 && index % 5 === 0) arrayVazio.push('fizzBuzz');
+    else if (index % 3 === 0) arrayVazio.push('fizz');
+    else if (index % 5 === 0) arrayVazio.push('buzz');
+    else arrayVazio.push('bug!');
+  });
+  return arrayVazio;
 }
 
 // Desafio 9 (ok)
@@ -103,6 +103,7 @@ function encode(mensagem) {
   frase = frase.replace(/u/gi, '5');
   return frase;
 }
+// (ok)
 function decode(frase) {
   // seu código aqui
   // referência site: https://blog.betrybe.com/javascript/javascript-replace/
