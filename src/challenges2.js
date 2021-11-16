@@ -19,35 +19,31 @@ function techList(tecnologias, userName) {
 function generatePhoneNumber(num) {
   // seu código aqui
   let telefone = '(xx) xxxxx-xxxx';
-  let repetido = 0;
+  // Verificando o tamanho do array
   if (num.length > 11 || num.length < 11) return 'Array com tamanho incorreto.';
   for (let key of num) {
+    let repetido = 0;
+    // Verificando se os numeros vão de 0 a 9;
     if (key > 9 || key < 0) return 'não é possível gerar um número de telefone com esses valores';
-    repetido = 0;
     for (let index of num) {
-      if (index === key) {
-        repetido += 1;
-        if (repetido >= 3) return 'não é possível gerar um número de telefone com esses valores';
-      }
+      // Verificando quantas vezes repete
+      if (key === index) repetido += 1;
+      if (repetido >= 3) return 'não é possível gerar um número de telefone com esses valores';
     }
+    // Com tudo ok, alterando o valor da string;
     telefone = telefone.replace('x', key);
   }
   return telefone;
 }
 
-// Desafio 12
+// Desafio 12 (ok)
 function triangleCheck(lineA, lineB, lineC) {
   // seu código aqui
   // referência site: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/abs
-  let resposta;
-  let diferençaAbsoluta = Math.abs(lineA) - Math.abs(lineB) - Math.abs(lineC);
-  let somaAB = lineA + lineB;
-  let somaAC = lineA + lineC;
-  let somaCB = lineC + lineB;
-
-  if (somaAB > lineC && somaCB > lineA && somaAC > lineB && lineC > diferençaAbsoluta && lineB > diferençaAbsoluta && lineA > diferençaAbsoluta) resposta = true;
-  else resposta = false;
-  return resposta;
+  if (((lineA + lineC) > lineB) && (Math.abs(lineA - lineC) < lineB) === true) {
+    return true;
+  }
+  return false;
 }
 
 // Desafio 13 (ok)
